@@ -1,0 +1,78 @@
+SQL> @lab1.sql
+
+Table created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+Commit complete.
+
+
+EMP_NAME                                                                        
+--------------------                                                            
+ABC                                                                             
+DEF                                                                             
+GHI                                                                             
+JKL                                                                             
+MNO                                                                             
+
+
+    EMP_NO EMP_NAME             EMP_ADDRESS                                     
+---------- -------------------- --------------------                            
+       101 ABC                  MANIPAL                                         
+       103 GHI                  MANIPAL                                         
+
+
+Table altered.
+
+
+1 row updated.
+
+
+1 row updated.
+
+
+1 row updated.
+
+
+1 row updated.
+
+
+1 row updated.
+
+
+Commit complete.
+
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMP_NO                                             NUMBER(5)
+ EMP_NAME                                           VARCHAR2(20)
+ EMP_ADDRESS                                        VARCHAR2(20)
+ SALARY                                             NUMBER(8,2)
+
+
+2 rows deleted.
+
+
+Commit complete.
+
+
+Table renamed.
+
+
+Table dropped.
+
+SQL> spool out
