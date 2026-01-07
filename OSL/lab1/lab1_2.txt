@@ -1,0 +1,15 @@
+OSL2@cgl-01:~/adarsh_240905294/lab1$ date
+Wednesday 07 January 2026 10:04:50 AM IST
+OSL2@cgl-01:~/adarsh_240905294/lab1$ echo "Execute and write output of all the commands explained so far in this manual. Save the
+output in Lab1_1.txt . Commands and the output I copied from the command prompt ."
+Execute and write output of all the commands explained so far in this manual. Save the
+output in Lab1_1.txt . Commands and the output I copied from the command prompt .
+OSL2@cgl-01:~/adarsh_240905294/lab1$ pwd
+/home/OSL2/adarsh_240905294/lab1
+OSL2@cgl-01:~/adarsh_240905294/lab1$ cd ..
+OSL2@cgl-01:~/adarsh_240905294$ ls -l
+total 4
+drwxr-xr-x 2 OSL2 OSL2 4096 Jan  7 10:04 lab1
+OSL2@cgl-01:~/adarsh_240905294$ touch new.txt
+OSL2@cgl-01:~/adarsh_240905294$ file new.txt
+new.txt: empty

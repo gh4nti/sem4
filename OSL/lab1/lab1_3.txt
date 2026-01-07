@@ -1,0 +1,75 @@
+OSL2@cgl-01:~/adarsh_240905294/lab1$ date
+Wednesday 07 January 2026 10:07:38 AM IST
+OSL2@cgl-01:~/adarsh_240905294/lab1$ echo " Explore the following commands along with their various options. (Some of the
+options are specified in the bracket)
+a. cat (variation used to create a new file and append to existing file)
+b. head and tail (-n, -c )
+c. cp (-n, -i, -f)
+d. mv (-f, -i) [try (i) mv dir1 dir2 (ii) mv file1 file2 file3 ... directory]
+e. rm (-r, -i, -f)
+f. rmdir (-r, -f)
+g. find (-name, -type)"
+ Explore the following commands along with their various options. (Some of the
+options are specified in the bracket)
+a. cat (variation used to create a new file and append to existing file)
+b. head and tail (-n, -c )
+c. cp (-n, -i, -f)
+d. mv (-f, -i) [try (i) mv dir1 dir2 (ii) mv file1 file2 file3 ... directory]
+e. rm (-r, -i, -f)
+f. rmdir (-r, -f)
+g. find (-name, -type)
+OSL2@cgl-01:~/adarsh_240905294/lab1$ cat > a.txt
+line 1
+line 2
+line 3
+line 4
+OSL2@cgl-01:~/adarsh_240905294/lab1$ cat a.txt
+line 1
+line 2
+line 3
+line 4
+OSL2@cgl-01:~/adarsh_240905294/lab1$ cat >> a.txt
+line 5
+line 6
+OSL2@cgl-01:~/adarsh_240905294/lab1$ cat a.txt
+line 1
+line 2
+line 3
+line 4
+line 5
+line 6
+OSL2@cgl-01:~/adarsh_240905294/lab1$ head a.txt -n 4
+line 1
+line 2
+line 3
+line 4
+OSL2@cgl-01:~/adarsh_240905294/lab1$ head a.txt -c 10
+line 1
+linOSL2@cgl-01:~/adarsh_240905294/lab1$ tail a.txt -n 4
+line 3
+line 4
+line 5
+line 6
+OSL2@cgl-01:~/adarsh_240905294/lab1$ tail a.txt -c 10
+ 5
+line 6
+OSL2@cgl-01:~/adarsh_240905294/lab1$ cp -n a.txt ..
+OSL2@cgl-01:~/adarsh_240905294/lab1$ cp -n a.txt ..
+OSL2@cgl-01:~/adarsh_240905294/lab1$ cp -i a.txt ..
+cp: overwrite '../a.txt'? 
+OSL2@cgl-01:~/adarsh_240905294/lab1$ cp -f a.txt ..
+OSL2@cgl-01:~/adarsh_240905294/lab1$ mv a.txt b.txt
+OSL2@cgl-01:~/adarsh_240905294/lab1$ ls
+b.txt  lab1_1.png  lab1_1.txt  lab1_2.png  lab1_2.txt
+OSL2@cgl-01:~/adarsh_240905294/lab1$ mkdir folder
+OSL2@cgl-01:~/adarsh_240905294/lab1$ mv b.txt folder/b.txt
+OSL2@cgl-01:~/adarsh_240905294/lab1$ rm -rf folder/
+OSL2@cgl-01:~/adarsh_240905294/lab1$ ls
+lab1_1.png  lab1_1.txt  lab1_2.png  lab1_2.txt
+OSL2@cgl-01:~/adarsh_240905294/lab1$ mkdir empty
+OSL2@cgl-01:~/adarsh_240905294/lab1$ rmdir empty
+OSL2@cgl-01:~/adarsh_240905294/lab1$ ls
+lab1_1.png  lab1_1.txt  lab1_2.png  lab1_2.txt
+OSL2@cgl-01:~/adarsh_240905294/lab1$ find . -name "*.png"
+./lab1_1.png
+./lab1_2.png

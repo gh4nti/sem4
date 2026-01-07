@@ -1,0 +1,14 @@
+OSL2@cgl-01:~$ date
+Wednesday 07 January 2026 10:03:23 AM IST
+OSL2@cgl-01:~$ echo "Create a folder with your <name >_registration number in the /home folder. Use this
+folder to save rest of lab exercises. For each lab create a separate folder ex: Lab1, Lab2...
+Lab11."
+Create a folder with your <name >_registration number in the /home folder. Use this
+folder to save rest of lab exercises. For each lab create a separate folder ex: Lab1, Lab2...
+Lab11.
+OSL2@cgl-01:~$ mkdir adarsh_240905294
+OSL2@cgl-01:~$ cd adarsh_240905294/
+OSL2@cgl-01:~/adarsh_240905294$ mkdir lab1
+OSL2@cgl-01:~/adarsh_240905294$ cd lab1
+OSL2@cgl-01:~/adarsh_240905294/lab1$ pwd
+/home/OSL2/adarsh_240905294/lab1
