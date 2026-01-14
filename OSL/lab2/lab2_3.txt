@@ -1,6 +1,6 @@
 OSL2@cgl-01:~/adarsh_240905294/lab2$ date
-Wednesday 14 January 2026 09:56:21 AM IST
-OSL2@cgl-01:~/adarsh_240905294/lab2$ echo "Create file studentInformation.txt using vi editor which contains details in the
+Wednesday 14 January 2026 10:06:47 AM IST
+OSL2@cgl-01:~/adarsh_240905294/lab2$ echo " Create file studentInformation.txt using vi editor which contains details in the
 following format.
 RegistrationNo:Name:Department:Branch:Section:Sub1:Sub2:Sub3
 1234:XYZ:ICT:CCE:A:80:60:70 ... (add atleast 10 rows)
@@ -9,7 +9,7 @@ ii) Replace all occurrences of IT branch with “Information Technology” and s
 the output to ITStudents.txt
 iii) Display the average marks of student with the given registration number
 “1234” (or any specific existing number)."
-Create file studentInformation.txt using vi editor which contains details in the
+ Create file studentInformation.txt using vi editor which contains details in the
 following format.
 RegistrationNo:Name:Department:Branch:Section:Sub1:Sub2:Sub3
 1234:XYZ:ICT:CCE:A:80:60:70 ... (add atleast 10 rows)
@@ -18,13 +18,10 @@ ii) Replace all occurrences of IT branch with “Information Technology” and s
 the output to ITStudents.txt
 iii) Display the average marks of student with the given registration number
 “1234” (or any specific existing number).
-OSL2@cgl-01:~/adarsh_240905294/lab2$ vim student.txt
+OSL2@cgl-01:~/adarsh_240905294/lab2$ vim studentInformation.txt
 OSL2@cgl-01:~/adarsh_240905294/lab2$ grep ':ICT:' studentInformation.txt | wc -l
-grep: studentInformation.txt: No such file or directory
-0
-OSL2@cgl-01:~/adarsh_240905294/lab2$ grep ':ICT:' student.txt | wc -l
 5
-OSL2@cgl-01:~/adarsh_240905294/lab2$ sed 's/:IT:/:Information Technology:/g' student.txt > ITStudents.txt
+OSL2@cgl-01:~/adarsh_240905294/lab2$ sed 's/:IT:/:Information Technology:/g' studentInformation.txt > ITStudents.txt
 OSL2@cgl-01:~/adarsh_240905294/lab2$ cat ITStudents.txt 
 RegistrationNo:Name:Department:Branch:Section:Sub1:Sub2:Sub3
 1234:XYZ:ICT:CCE:A:80:60:70
@@ -37,6 +34,6 @@ RegistrationNo:Name:Department:Branch:Section:Sub1:Sub2:Sub3
 1241:MNO:MECH:CSE:B:58:62:64
 1242:STU:ICT:Information Technology:A:81:79:77
 1243:VWX:CSE:CSE:C:69:71:73
-OSL2@cgl-01:~/adarsh_240905294/lab2$ grep '^1234:' student.txt | \
+OSL2@cgl-01:~/adarsh_240905294/lab2$ grep '^1234:' studentInformation.txt | \
 awk -F':' '{ avg=($6+$7+$8)/3; print "Average Marks =", avg }'
 Average Marks = 70
