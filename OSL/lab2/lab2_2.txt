@@ -1,0 +1,76 @@
+OSL2@cgl-01:~/adarsh_240905294/lab2$ date
+Wednesday 14 January 2026 09:50:20 AM IST
+OSL2@cgl-01:~/adarsh_240905294/lab2$ echo "Write grep commands to do the following activities:
+• To select the lines from a file that have exactly two characters.
+• To select the lines from a file that start with the upper case letter.
+• To select the lines from a file that end with a period.
+• To select the lines in a file that has one or more blank spaces.
+• To select the lines in a file and direct them to another file which has digits as
+one of the characters in that line."
+Write grep commands to do the following activities:
+• To select the lines from a file that have exactly two characters.
+• To select the lines from a file that start with the upper case letter.
+• To select the lines from a file that end with a period.
+• To select the lines in a file that has one or more blank spaces.
+• To select the lines in a file and direct them to another file which has digits as
+one of the characters in that line.
+OSL2@cgl-01:~/adarsh_240905294/lab2$ cat > sample.txt
+Hi
+A
+OK
+hello
+Hello
+This is OS.
+NoSpace
+End.
+Test file
+AB
+^C
+OSL2@cgl-01:~/adarsh_240905294/lab2$ cat sample.txt
+Hi
+A
+OK
+hello
+Hello
+This is OS.
+NoSpace
+End.
+Test file
+AB
+OSL2@cgl-01:~/adarsh_240905294/lab2$ grep '^..$' sample.txt
+Hi
+OK
+AB
+OSL2@cgl-01:~/adarsh_240905294/lab2$ grep '^[A-Z]' sample.txt
+Hi
+A
+OK
+Hello
+This is OS.
+NoSpace
+End.
+Test file
+AB
+OSL2@cgl-01:~/adarsh_240905294/lab2$ grep '\.$' sample.txt
+This is OS.
+End.
+OSL2@cgl-01:~/adarsh_240905294/lab2$ grep ' ' sample.txt
+This is OS.
+Test file
+OSL2@cgl-01:~/adarsh_240905294/lab2$ grep '[0-9]' sample.txt > digits.txt
+OSL2@cgl-01:~/adarsh_240905294/lab2$ cat digits.txt
+OSL2@cgl-01:~/adarsh_240905294/lab2$ cat sample.txt 
+Hi
+A
+OK
+hello
+Hello
+This is OS.
+NoSpace
+End.
+Test file
+AB
+OSL2@cgl-01:~/adarsh_240905294/lab2$ echo "digit1" > sample.txt 
+OSL2@cgl-01:~/adarsh_240905294/lab2$ grep '[0-9]' sample.txt > digits.txt
+OSL2@cgl-01:~/adarsh_240905294/lab2$ cat digits.txt 
+digit1

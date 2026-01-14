@@ -1,0 +1,149 @@
+OSL2@cgl-01:~/adarsh_240905294/lab2$ date
+Wednesday 14 January 2026 09:29:25 AM IST
+OSL2@cgl-01:~/adarsh_240905294/lab2$ echo "Execute all the commands explained in this section and write the output."
+Execute all the commands explained in this section and write the output.
+OSL2@cgl-01:~/adarsh_240905294/lab2$ cat > fruitlist.txt
+apple
+apples
+pineapple
+fruit-apple
+banana
+pear
+peach
+orange
+^C
+OSL2@cgl-01:~/adarsh_240905294/lab2$ cat fruitlist.txt 
+apple
+apples
+pineapple
+fruit-apple
+banana
+pear
+peach
+orange
+OSL2@cgl-01:~/adarsh_240905294/lab2$ grep apple fruitlist.txt
+apple
+apples
+pineapple
+fruit-apple
+OSL2@cgl-01:~/adarsh_240905294/lab2$ grep -x apple fruitlist.txt
+apple
+OSL2@cgl-01:~/adarsh_240905294/lab2$ grep ^p fruitlist.txt
+pineapple
+pear
+peach
+OSL2@cgl-01:~/adarsh_240905294/lab2$ grep -v apple fruitlist.txt
+banana
+pear
+peach
+orange
+OSL2@cgl-01:~/adarsh_240905294/lab2$ sort fruitlist.txt
+apple
+apples
+banana
+fruit-apple
+orange
+peach
+pear
+pineapple
+OSL2@cgl-01:~/adarsh_240905294/lab2$ sort -r fruitlist.txt
+pineapple
+pear
+peach
+orange
+fruit-apple
+banana
+apples
+apple
+OSL2@cgl-01:~/adarsh_240905294/lab2$ wc fruitlist.txt
+ 8  8 60 fruitlist.txt
+OSL2@cgl-01:~/adarsh_240905294/lab2$ wc -l fruitlist.txt
+8 fruitlist.txt
+OSL2@cgl-01:~/adarsh_240905294/lab2$ ls -l | cut -c 1-10
+total 8
+-rw-r--r--
+-rw-r--r--
+OSL2@cgl-01:~/adarsh_240905294/lab2$ cut -c1,4,7 record.txt
+cut: record.txt: No such file or directory
+OSL2@cgl-01:~/adarsh_240905294/lab2$ cut -c1,4,7 fruitlist.txt 
+al
+al
+pep
+fia
+ba
+pr
+pc
+on
+OSL2@cgl-01:~/adarsh_240905294/lab2$ ls -l | tr -s ' ' | cut -d ' ' -f 5
+
+60
+2
+OSL2@cgl-01:~/adarsh_240905294/lab2$ sed 's/apple/APPLE/' fruitlist.txt
+APPLE
+APPLEs
+pineAPPLE
+fruit-APPLE
+banana
+pear
+peach
+orange
+OSL2@cgl-01:~/adarsh_240905294/lab2$ sed -i 's/apple/APPLE/g' fruitlist.txt
+OSL2@cgl-01:~/adarsh_240905294/lab2$ tr '[a-z]' '[A-Z]' < fruitlist.txt
+APPLE
+APPLES
+PINEAPPLE
+FRUIT-APPLE
+BANANA
+PEAR
+PEACH
+ORANGE
+OSL2@cgl-01:~/adarsh_240905294/lab2$ ps
+    PID TTY          TIME CMD
+  80390 pts/1    00:00:00 bash
+ 174055 pts/1    00:00:00 ps
+OSL2@cgl-01:~/adarsh_240905294/lab2$ kill 174055
+bash: kill: (174055) - No such process
+OSL2@cgl-01:~/adarsh_240905294/lab2$ ps
+    PID TTY          TIME CMD
+  80390 pts/1    00:00:00 bash
+ 177168 pts/1    00:00:00 ps
+OSL2@cgl-01:~/adarsh_240905294/lab2$ ps
+    PID TTY          TIME CMD
+  80390 pts/1    00:00:00 bash
+ 177240 pts/1    00:00:00 ps
+OSL2@cgl-01:~/adarsh_240905294/lab2$ ps
+    PID TTY          TIME CMD
+  80390 pts/1    00:00:00 bash
+ 178636 pts/1    00:00:00 ps
+OSL2@cgl-01:~/adarsh_240905294/lab2$ gedit c.txt &
+[1] 201748
+OSL2@cgl-01:~/adarsh_240905294/lab2$ Gtk-Message: 09:39:30.680: Failed to load module "appmenu-gtk-module": 'gtk_module_display_init': /usr/lib/x86_64-linux-gnu/gtk-3.0/modules/libwindow-decorations-gtk-module.so: undefined symbol: gtk_module_display_init
+^C
+OSL2@cgl-01:~/adarsh_240905294/lab2$ ps
+    PID TTY          TIME CMD
+  80390 pts/1    00:00:00 bash
+ 201748 pts/1    00:00:00 gedit
+ 203167 pts/1    00:00:00 ps
+OSL2@cgl-01:~/adarsh_240905294/lab2$ kll 201748
+bash: kll: command not found
+OSL2@cgl-01:~/adarsh_240905294/lab2$ kill 201748
+OSL2@cgl-01:~/adarsh_240905294/lab2$ chmod 644 fruitlist.txt 
+[1]+  Terminated              gedit c.txt
+OSL2@cgl-01:~/adarsh_240905294/lab2$ ls -l fruitlist.txt 
+-rw-r--r-- 1 OSL2 OSL2 60 Jan 14 09:32 fruitlist.txt
+OSL2@cgl-01:~/adarsh_240905294/lab2$ echo "OS Lab"
+OS Lab
+OSL2@cgl-01:~/adarsh_240905294/lab2$ bc
+bc 1.07.1
+Copyright 1991-1994, 1997, 1998, 2000, 2004, 2006, 2008, 2012-2017 Free Software Foundation, Inc.
+This is free software with ABSOLUTELY NO WARRANTY.
+For details type `warranty'. 
+5+2
+7
+^C
+(interrupt) use quit to exit.
+^C
+(interrupt) use quit to exit.
+quit
+OSL2@cgl-01:~/adarsh_240905294/lab2$ echo "scale=2; 5/2" | bc
+2.50
