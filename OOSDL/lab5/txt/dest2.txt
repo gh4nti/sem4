@@ -1,0 +1,16 @@
+Java File Handling Example
+--------------------------
+Name: Alex Johnson
+User ID: 10457
+Email: alex.johnson@example.com
+
+Order Details:
+Order ID: ORD78945
+Product: Wireless Mouse
+Quantity: 2
+Price: 799.00
+
+Status: Order Confirmed
+Date: 15-01-2026
+
+Thank you for shopping with us!
