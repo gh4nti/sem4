@@ -8,44 +8,46 @@ i. Initialize room tariff and number of days using primitive data types and stor
 ii. Perform total bill calculation using unboxed primitive values. 
 
 iii. Display the final hotel bill.
-*/
+ */
 
 class HotelBilling {
-	private Double tariff;
-	private Integer days;
-	private Double serviceCharges;
 
-	HotelBilling(Double tariff, Integer days, Double serviceCharges) {
-		this.tariff = tariff;
-		this.days = days;
-		this.serviceCharges = serviceCharges;
-	}
+    private final Double tariff;
+    private final Integer days;
+    private final Double serviceCharges;
 
-	public Double calculateTotalBill() {
-		double totalCost = tariff * days;
-		double totalBill = totalCost + serviceCharges;
+    HotelBilling(Double tariff, Integer days, Double serviceCharges) {
+        this.tariff = tariff;
+        this.days = days;
+        this.serviceCharges = serviceCharges;
+    }
 
-		return totalBill;
-	}
+    public Double calculateTotalBill() {
+        double totalCost = tariff * days;
+        double totalBill = totalCost + serviceCharges;
+
+        return totalBill;
+    }
 }
 
 public class Program2_1 {
-	public static void main(String[] args) {
-		double tariff = 2500;
-		int days = 3;
-		double serviceCharges = 1200;
 
-		Double tariffObj = tariff;
-		Integer daysObj = days;
-		Double serviceChargesObj = serviceCharges;
+    public static void main(String[] args) {
+        double tariff = 2500;
+        int days = 3;
+        double serviceCharges = 1200;
 
-		HotelBilling bill = new HotelBilling(tariffObj, daysObj, serviceChargesObj);
+        Double tariffObj = tariff;
+        Integer daysObj = days;
+        Double serviceChargesObj = serviceCharges;
 
-		Double total = bill.calculateTotalBill();
+        HotelBilling bill = new HotelBilling(tariffObj, daysObj, serviceChargesObj);
 
-		System.out.println("Room Tariff per Day: " + tariffObj);
-		System.out.println("Number of Days Stayed: " + daysObj);
-		System.out.println("Service Charges: " + serviceChargesObj);
-		System.out.println("Total Hotel Bill: " + total);
-	}
+        Double total = bill.calculateTotalBill();
+
+        System.out.println("Room Tariff per Day: " + tariffObj);
+        System.out.println("Number of Days Stayed: " + daysObj);
+        System.out.println("Service Charges: " + serviceChargesObj);
+        System.out.println("Total Hotel Bill: " + total);
+    }
 }
