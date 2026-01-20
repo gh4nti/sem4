@@ -208,8 +208,8 @@ WHERE EXISTS (
           AND t2.ID = s.ID
           AND t1.course_id = c1.course_id
           AND t2.course_id = c2.course_id
-          AND c1.dept_name = 'CSE'
-          AND c2.dept_name = 'CSE'
+          AND c1.dept_name = 'Comp. Sci.'
+          AND c2.dept_name = 'Comp. Sci.'
           AND t1.course_id <> t2.course_id
 );
 
