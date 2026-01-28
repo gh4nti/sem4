@@ -24,7 +24,7 @@ int main()
         printf("Child PID  : %d\n", getpid());
         printf("Parent PID : %d\n", getppid());
 
-        execl("./process_demo", "process_demo", NULL);
+        execl("./1", "1", NULL);
 
         perror("Exec failed");
     }
