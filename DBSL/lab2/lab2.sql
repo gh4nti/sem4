@@ -1,38 +1,39 @@
 /*
-Consider the following schema:
-Employee (EmpNo, EmpName, Gender, Salary, Address, DNo)
-Department (DeptNo, DeptName, Location)
+ Consider the following schema:
+ Employee (EmpNo, EmpName, Gender, Salary, Address, DNo)
+ Department (DeptNo, DeptName, Location)
  */
 /*
-1. Create Employee table with following constraints:
-- Make EmpNo as Primary key.
-- Do not allow EmpName, Gender, Salary and Address to have null values.
-- Allow Gender to have one of the two values: ‘M’, ‘F’.
+ 1. Create Employee table with following constraints:
+ - Make EmpNo as Primary key.
+ - Do not allow EmpName, Gender, Salary and Address to have null values.
+ - Allow Gender to have one of the two values: ‘M’, ‘F’.
  */
-CREATE TABLE
-  Employee (
-    EmpNo NUMBER PRIMARY KEY,
-    EmpName VARCHAR2 (50) NOT NULL,
-    Gender CHAR(1) NOT NULL CHECK (Gender IN ('M', 'F')),
-    Salary NUMBER (10, 2) NOT NULL,
-    Address VARCHAR2 (100) NOT NULL,
-    DNo NUMBER
-  );
+CREATE TABLE Employee (
+  EmpNo NUMBER PRIMARY KEY,
+  EmpName VARCHAR2(50) NOT NULL,
+  Gender CHAR(1) NOT NULL CHECK (Gender IN ('M', 'F')),
+  Salary NUMBER(10, 2) NOT NULL,
+  Address VARCHAR2(100) NOT NULL,
+  DNo NUMBER
+);
 
 /*
-2. Create Department table with following:
-- Make DeptNo as Primary key
-- Make DeptName as candidate key
+ 2. Create Department table with following:
+ - Make DeptNo as Primary key
+ - Make DeptName as candidate key
  */
-CREATE TABLE
-  Department (
-    DeptNo NUMBER PRIMARY KEY,
-    DeptName VARCHAR2 (50) NOT NULL UNIQUE,
-    Location VARCHAR2 (50)
-  );
+CREATE TABLE Department (
+  DeptNo NUMBER PRIMARY KEY,
+  DeptName VARCHAR2(50) NOT NULL UNIQUE,
+  Location VARCHAR2(50)
+);
 
 -- 3. Make DNo of Employee as foreign key which refers to DeptNo of Department.
-ALTER TABLE Employee ADD CONSTRAINT fk_emp_dept FOREIGN KEY (DNo) REFERENCES Department (DeptNo);
+ALTER TABLE
+  Employee
+ADD
+  CONSTRAINT fk_emp_dept FOREIGN KEY (DNo) REFERENCES Department(DeptNo);
 
 -- 4. Insert few tuples into Employee and Department which satisfies the above constraints.
 -- Department
@@ -82,50 +83,56 @@ VALUES
 
 -- 6. Try to modify/delete a tuple which violates a constraint.
 -- Update GENDER to invalid
-UPDATE Employee
+UPDATE
+  Employee
 SET
   Gender = 'X'
 WHERE
   EmpNo = 101;
 
 -- Duplicate DeptName
-UPDATE Department
+UPDATE
+  Department
 SET
   DeptName = 'IT'
 WHERE
   DeptNo = 30;
 
 -- 7. Modify the foreign key constraint of Employee table such that whenever a department tuple is deleted, the employees belonging to that department will also be deleted.
-ALTER TABLE Employee
-DROP CONSTRAINT fk_emp_dept;
+ALTER TABLE
+  Employee DROP CONSTRAINT fk_emp_dept;
 
-ALTER TABLE Employee ADD CONSTRAINT fk_emp_dept FOREIGN KEY (DNo) REFERENCES Department (DeptNo) ON DELETE CASCADE;
+ALTER TABLE
+  Employee
+ADD
+  CONSTRAINT fk_emp_dept FOREIGN KEY (DNo) REFERENCES Department (DeptNo) ON DELETE CASCADE;
 
 -- 8. Create a named constraint to set the default salary to 10000 and test the constraint by inserting a new record.
-ALTER TABLE Employee MODIFY Salary DEFAULT 10000;
+ALTER TABLE
+  Employee
+MODIFY
+  Salary DEFAULT 10000;
 
 INSERT INTO
   Employee (EmpNo, EmpName, Gender, Address, DNo)
 VALUES
   (108, 'Amit', 'M', 'Delhi', 20);
 
+@university.sql
 /*
-University Database Schema:
-Student (ID, name,dept-name, tot-cred)
-Instructor (ID, name, dept-name, salary)
-Course (Course-id, title,dept-name, credits)
-Takes (ID, course-id, sec-id, semester, year, grade)
-Classroom (building, room-number, capacity)
-Department (dept-name, building, budget)
-Section (course-id, section-id, semester, year, building, room-number, time-slot-id)
-Teaches (id, course-id, section-id, semester, year)
-Advisor (s-id, i-id)
-Time-slot (time-slot-id, day, start-time, end-time)
-Prereq (course-id, prereq-id)
+ University Database Schema:
+ Student (ID, name,dept-name, tot-cred)
+ Instructor (ID, name, dept-name, salary)
+ Course (Course-id, title,dept-name, credits)
+ Takes (ID, course-id, sec-id, semester, year, grade)
+ Classroom (building, room-number, capacity)
+ Department (dept-name, building, budget)
+ Section (course-id, section-id, semester, year, building, room-number, time-slot-id)
+ Teaches (id, course-id, section-id, semester, year)
+ Advisor (s-id, i-id)
+ Time-slot (time-slot-id, day, start-time, end-time)
+ Prereq (course-id, prereq-id)
  */
-
-@university.sql;
-
 -- 9. List all Students with names and their department names.
 SELECT
   name,
@@ -166,7 +173,8 @@ SELECT
 FROM
   Instructor
 WHERE
-  salary BETWEEN 40000 AND 90000;
+  salary BETWEEN 40000
+  AND 90000;
 
 -- 14. Display the IDs of all instructors who have never taught a course.
 SELECT
@@ -176,7 +184,7 @@ FROM
 WHERE
   NOT EXISTS (
     SELECT
-      1
+      *
     FROM
       Teaches t
     WHERE
@@ -238,14 +246,14 @@ WHERE
 -- 19. List the student names along with the length of the student names.
 SELECT
   name,
-  LENGTH (name) AS name_length
+  LENGTH(name) AS name_length
 FROM
   Student;
 
 -- 20. List the department names and 3 characters from 3rd position of each department name.
 SELECT
   dept_name,
-  SUBSTR (dept_name, 3, 3) AS sub_string
+  SUBSTR(dept_name, 3, 3) AS sub_string
 FROM
   Department;
 
@@ -258,7 +266,7 @@ FROM
 -- 22. Replace NULL with value1 (say 0) for a column in any of the table.
 SELECT
   name,
-  NVL (tot_cred, 0) AS tot_cred
+  NVL(tot_cred, 0) AS tot_cred
 FROM
   Student;
 
@@ -270,7 +278,10 @@ FROM
   Instructor;
 
 -- Add date of birth column (DOB) to Employee Table. Insert appropriate DOB values for different employees.
-ALTER TABLE Employee ADD DOB DATE;
+ALTER TABLE
+  Employee
+ADD
+  DOB DATE;
 
 INSERT INTO
   Employee
@@ -298,13 +309,15 @@ VALUES
     DATE '1997-11-23'
   );
 
-UPDATE Employee
+UPDATE
+  Employee
 SET
   DOB = DATE '1996-03-10'
 WHERE
   EmpNo = 101;
 
-UPDATE Employee
+UPDATE
+  Employee
 SET
   DOB = DATE '1999-08-05'
 WHERE
@@ -313,29 +326,29 @@ WHERE
 COMMIT;
 
 /*
-24. Display the birth date of all the employees in the following format:
-- ‘DD-MON-YYYY’
-- ‘DD-MON-YY’
-- ‘DD-MM-YY’
+ 24. Display the birth date of all the employees in the following format:
+ - ‘DD-MON-YYYY’
+ - ‘DD-MON-YY’
+ - ‘DD-MM-YY’
  */
 SELECT
   EmpName,
-  TO_CHAR (DOB, 'DD-MON-YYYY') AS dob_dd_mon_yyyy,
-  TO_CHAR (DOB, 'DD-MON-YY') AS dob_dd_mon_yy,
-  TO_CHAR (DOB, 'DD-MM-YY') AS dob_dd_mm_yy
+  TO_CHAR(DOB, 'DD-MON-YYYY') AS dob_dd_mon_yyyy,
+  TO_CHAR(DOB, 'DD-MON-YY') AS dob_dd_mon_yy,
+  TO_CHAR(DOB, 'DD-MM-YY') AS dob_dd_mm_yy
 FROM
   Employee;
 
 /*
-25. List the employee names and the year (fully spelled out) in which they are born
-- ‘YEAR’
-- ‘Year’
-- ‘year’
+ 25. List the employee names and the year (fully spelled out) in which they are born
+ - ‘YEAR’
+ - ‘Year’
+ - ‘year’
  */
 SELECT
   EmpName,
-  TO_CHAR (DOB, 'YEAR') AS year_upper,
-  INITCAP (TO_CHAR (DOB, 'YEAR')) AS year_initcap,
-  LOWER(TO_CHAR (DOB, 'YEAR')) AS year_lower
+  TO_CHAR(DOB, 'YEAR') AS year_upper,
+  INITCAP(TO_CHAR(DOB, 'YEAR')) AS year_initcap,
+  LOWER(TO_CHAR(DOB, 'YEAR')) AS year_lower
 FROM
   Employee;

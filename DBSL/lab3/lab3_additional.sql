@@ -1,24 +1,7 @@
-/*
-University Database Schema:
-Student (ID, name,dept-name, tot-cred)
-Instructor (ID, name, dept-name, salary)
-Course (Course-id, title,dept-name, credits)
-Takes (ID, course-id, sec-id, semester, year, grade)
-Classroom (building, room-number, capacity)
-Department (dept-name, building, budget)
-Section (course-id, section-id, semester, year, building, room-number, time-slot-id)
-Teaches (id, course-id, section-id, semester, year)
-Advisor (s-id, i-id)
-Time-slot (time-slot-id, day, start-time, end-time)
-Prereq (course-id, prereq-id)
-*/
-
-@university.sql
-
 -- ADDITIONAL QUESTIONS
 -- 1. Find the names of all departments with instructor and remove duplicates.
-SELECT DISTINCT
-       dept_name
+SELECT
+       DISTINCT dept_name
 FROM
        Instructor;
 
@@ -53,5 +36,4 @@ GROUP BY
        s.ID,
        s.name,
        s.dept_name,
-
        i.name;
