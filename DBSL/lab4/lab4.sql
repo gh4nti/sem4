@@ -257,7 +257,7 @@ UPDATE Student
 SET
     dept_name = 'IT'
 WHERE
-    dept_name = 'CSE';
+    dept_name = 'Comp. Sci.';
 
 -- ROLLBACK
 ROLLBACK TO before_transfer;
@@ -275,5 +275,6 @@ SET
 
 -- ROLLBACK
 ROLLBACK TO before_salary_update;
+
 
 -- COMMIT;
