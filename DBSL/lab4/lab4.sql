@@ -1,16 +1,16 @@
 /*
- University Database Schema:
- Student (ID, name,dept-name, tot-cred)
- Instructor (ID, name, dept-name, salary)
- Course (Course-id, title,dept-name, credits)
- Takes (ID, course-id, sec-id, semester, year, grade)
- Classroom (building, room-number, capacity)
- Department (dept-name, building, budget)
- Section (course-id, section-id, semester, year, building, room-number, time-slot-id)
- Teaches (id, course-id, section-id, semester, year)
- Advisor (s-id, i-id)
- Time-slot (time-slot-id, day, start-time, end-time)
- Prereq (course-id, prereq-id)
+University Database Schema:
+Student (ID, name,dept-name, tot-cred)
+Instructor (ID, name, dept-name, salary)
+Course (Course-id, title,dept-name, credits)
+Takes (ID, course-id, sec-id, semester, year, grade)
+Classroom (building, room-number, capacity)
+Department (dept-name, building, budget)
+Section (course-id, section-id, semester, year, building, room-number, time-slot-id)
+Teaches (id, course-id, section-id, semester, year)
+Advisor (s-id, i-id)
+Time-slot (time-slot-id, day, start-time, end-time)
+Prereq (course-id, prereq-id)
  */
 -- Group By
 -- 1. Find the number of students in each course.
@@ -206,12 +206,13 @@ WHERE
 
 -- With Clause
 -- 13. Find all departments with the maximum budget.
-WITH max_budget AS (
-    SELECT
-        MAX(budget) AS max_budget
-    FROM
-        Department
-)
+WITH
+    max_budget AS (
+        SELECT
+            MAX(budget) AS max_budget
+        FROM
+            Department
+    )
 SELECT
     dept_name
 FROM
@@ -221,21 +222,22 @@ WHERE
     Department.budget = max_budget.max_budget;
 
 -- 14. Find all departments where the total salary is greater than the average of the total salary at all departments.
-WITH dept_total_salary AS (
-    SELECT
-        dept_name,
-        SUM(salary) AS total_salary
-    FROM
-        Instructor
-    GROUP BY
-        dept_name
-),
-avg_total_salary AS (
-    SELECT
-        AVG(total_salary) AS avg_salary
-    FROM
-        dept_total_salary
-)
+WITH
+    dept_total_salary AS (
+        SELECT
+            dept_name,
+            SUM(salary) AS total_salary
+        FROM
+            Instructor
+        GROUP BY
+            dept_name
+    ),
+    avg_total_salary AS (
+        SELECT
+            AVG(total_salary) AS avg_salary
+        FROM
+            dept_total_salary
+    )
 SELECT
     dept_name
 FROM
@@ -248,8 +250,7 @@ WHERE
 -- 15. Transfer all the students from CSE department to IT department.
 SAVEPOINT before_transfer;
 
-UPDATE
-    Student
+UPDATE Student
 SET
     dept_name = 'IT'
 WHERE
@@ -262,8 +263,7 @@ ROLLBACK TO before_transfer;
 -- 16. Increase salaries of instructors whose salary is over $100,000 by 3%, and all others receive a 5% raise.
 SAVEPOINT before_salary_update;
 
-UPDATE
-    Instructor
+UPDATE Instructor
 SET
     salary = CASE
         WHEN salary > 100000 THEN salary * 1.03

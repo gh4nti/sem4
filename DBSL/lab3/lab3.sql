@@ -1,16 +1,16 @@
 /*
- University Database Schema:
- Student (ID, name,dept-name, tot-cred)
- Instructor (ID, name, dept-name, salary)
- Course (Course-id, title,dept-name, credits)
- Takes (ID, course-id, sec-id, semester, year, grade)
- Classroom (building, room-number, capacity)
- Department (dept-name, building, budget)
- Section (course-id, section-id, semester, year, building, room-number, time-slot-id)
- Teaches (id, course-id, section-id, semester, year)
- Advisor (s-id, i-id)
- Time-slot (time-slot-id, day, start-time, end-time)
- Prereq (course-id, prereq-id)
+University Database Schema:
+Student (ID, name,dept-name, tot-cred)
+Instructor (ID, name, dept-name, salary)
+Course (Course-id, title,dept-name, credits)
+Takes (ID, course-id, sec-id, semester, year, grade)
+Classroom (building, room-number, capacity)
+Department (dept-name, building, budget)
+Section (course-id, section-id, semester, year, building, room-number, time-slot-id)
+Teaches (id, course-id, section-id, semester, year)
+Advisor (s-id, i-id)
+Time-slot (time-slot-id, day, start-time, end-time)
+Prereq (course-id, prereq-id)
  */
 -- Set Operations
 -- UNION
@@ -22,8 +22,7 @@ FROM
 WHERE
         semester = 'Fall'
         AND year = 2009
-UNION
-ALL
+UNION ALL
 SELECT
         course_id
 FROM
@@ -58,8 +57,7 @@ FROM
         Section
 WHERE
         semester = 'Fall'
-        AND year = 2009
-MINUS
+        AND year = 2009 MINUS
 SELECT
         course_id
 FROM
@@ -81,8 +79,8 @@ WHERE
 -- Nested Subqueries
 -- Set Membership (in / not in)
 -- 5. Find courses offered in Fall 2009 and in Spring 2010.
-SELECT
-        DISTINCT course_id
+SELECT DISTINCT
+        course_id
 FROM
         Section
 WHERE
@@ -124,8 +122,8 @@ WHERE
         );
 
 -- 7. Find courses offered in Fall 2009 but not in Spring 2010.
-SELECT
-        DISTINCT course_id
+SELECT DISTINCT
+        course_id
 FROM
         Section
 WHERE
@@ -224,8 +222,8 @@ WHERE
 
 -- Test for Empty Relations (exists/ not exists)
 -- 13. Find all courses taught in both the Fall 2009 semester and in the Spring 2010 semester.
-SELECT
-        DISTINCT s1.course_id
+SELECT DISTINCT
+        s1.course_id
 FROM
         Section s1
 WHERE
@@ -269,8 +267,8 @@ WHERE
 
 -- Test for Absence of Duplicate Tuples
 -- 15. Find all courses that were offered at most once in 2009.
-SELECT
-        DISTINCT s1.course_id
+SELECT DISTINCT
+        s1.course_id
 FROM
         Section s1
 WHERE
@@ -290,8 +288,8 @@ WHERE
         );
 
 -- 16. Find all the students who have opted at least two courses offered by CSE department.
-SELECT
-        DISTINCT s.ID,
+SELECT DISTINCT
+        s.ID,
         s.name
 FROM
         Student s
@@ -334,7 +332,8 @@ WHERE
 
 -- Views
 -- 18. Create a view all_courses consisting of course sections offered by Physics department in the Fall 2009, with the building and room number of each section.
-CREATE VIEW all_courses AS
+CREATE VIEW
+        all_courses AS
 SELECT
         s.course_id,
         s.sec_id,
@@ -357,7 +356,8 @@ FROM
         all_courses;
 
 -- 20. Create a view department_total_salary consisting of department name and total salary of that department.
-CREATE VIEW department_total_salary AS
+CREATE VIEW
+        department_total_salary AS
 SELECT
         dept_name,
         SUM(salary) AS total_salary

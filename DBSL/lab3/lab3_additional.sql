@@ -1,7 +1,7 @@
 -- ADDITIONAL QUESTIONS
 -- 1. Find the names of all departments with instructor and remove duplicates.
-SELECT
-       DISTINCT dept_name
+SELECT DISTINCT
+       dept_name
 FROM
        Instructor;
 

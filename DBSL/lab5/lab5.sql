@@ -1,30 +1,30 @@
 /*
- Relational Schema:
- EMPLOYEE(Ssn, Fname, Minit, Lname, Bdate, Address, Sex, Salary, Super_ssn, Dno),
- DEPARTMENT(Dnumber, Dname, Mgr_ssn, Mgr_start_date),
- DEPT_LOCATIONS(Dnumber, Dlocation),
- PROJECT(Pnumber, Pname, Plocation, Dnum),
- WORKS_ON(Essn, Pno, Hours),
- DEPENDENT(Essn, Dependent_name, Sex, Bdate, Relationship)
- 
- Key Constraints:
- PK:
- EMPLOYEE(Ssn)
- DEPARTMENT(Dnumber)
- DEPT_LOCATIONS(Dnumber, Dlocation)
- PROJECT(Pnumber)
- WORKS_ON(Essn, Pno)
- DEPENDENT(Essn, Dependent_name)
- 
- FK:
- EMPLOYEE.Super_ssn → EMPLOYEE.Ssn
- EMPLOYEE.Dno → DEPARTMENT.Dnumber
- DEPARTMENT.Mgr_ssn → EMPLOYEE.Ssn
- DEPT_LOCATIONS.Dnumber → DEPARTMENT.Dnumber
- PROJECT.Dnum → DEPARTMENT.Dnumber
- WORKS_ON.Essn → EMPLOYEE.Ssn
- WORKS_ON.Pno → PROJECT.Pnumber
- DEPENDENT.Essn → EMPLOYEE.Ssn
+Relational Schema:
+EMPLOYEE(Ssn, Fname, Minit, Lname, Bdate, Address, Sex, Salary, Super_ssn, Dno),
+DEPARTMENT(Dnumber, Dname, Mgr_ssn, Mgr_start_date),
+DEPT_LOCATIONS(Dnumber, Dlocation),
+PROJECT(Pnumber, Pname, Plocation, Dnum),
+WORKS_ON(Essn, Pno, Hours),
+DEPENDENT(Essn, Dependent_name, Sex, Bdate, Relationship)
+
+Key Constraints:
+PK:
+EMPLOYEE(Ssn)
+DEPARTMENT(Dnumber)
+DEPT_LOCATIONS(Dnumber, Dlocation)
+PROJECT(Pnumber)
+WORKS_ON(Essn, Pno)
+DEPENDENT(Essn, Dependent_name)
+
+FK:
+EMPLOYEE.Super_ssn → EMPLOYEE.Ssn
+EMPLOYEE.Dno → DEPARTMENT.Dnumber
+DEPARTMENT.Mgr_ssn → EMPLOYEE.Ssn
+DEPT_LOCATIONS.Dnumber → DEPARTMENT.Dnumber
+PROJECT.Dnum → DEPARTMENT.Dnumber
+WORKS_ON.Essn → EMPLOYEE.Ssn
+WORKS_ON.Pno → PROJECT.Pnumber
+DEPENDENT.Essn → EMPLOYEE.Ssn
  */
 -- 1. Retrieve the birth date and address of the employee(s) whose name is 'John B.  Smith'. Retrieve the name and address of all employees who work for the 'Research' department.
 SELECT
@@ -79,8 +79,8 @@ FROM
     LEFT JOIN EMPLOYEE S ON E.Super_ssn = S.Ssn;
 
 -- 4. Make a list of all project numbers for projects that involve an employee whose last  name is 'Smith', either as a worker or as a manager of the department that controls the project.
-SELECT
-    DISTINCT P.Pnumber
+SELECT DISTINCT
+    P.Pnumber
 FROM
     PROJECT P
 WHERE
@@ -133,8 +133,8 @@ ORDER BY
     E.Fname;
 
 -- 7. Retrieve the name of each employee who has a dependent with the same first name and is the same sex as the employee.
-SELECT
-    DISTINCT E.Fname,
+SELECT DISTINCT
+    E.Fname,
     E.Lname
 FROM
     EMPLOYEE E
@@ -160,8 +160,8 @@ WHERE
     );
 
 -- 9. List the names of managers who have at least one dependent.
-SELECT
-    DISTINCT E.Fname,
+SELECT DISTINCT
+    E.Fname,
     E.Lname
 FROM
     EMPLOYEE E
