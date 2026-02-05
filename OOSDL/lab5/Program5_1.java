@@ -1,4 +1,4 @@
-// Design and implement a Java application that copies the contents of one file to another using byte streams. The program must use FileInputStream to  read data from a source file and FileOutputStream to write the same data to a destination file.
+// Design and implement a Java application that copies the contents of one file to another using byte streams. The program must use FileInputStream to read data from a source file and FileOutputStream to write the same data to a destination file.
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -37,3 +37,4 @@ public class Program5_1 {
         }
     }
 }
+
