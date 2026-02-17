@@ -273,12 +273,10 @@ v_gpa StudentTable.GPA % TYPE;
 
 v_grade VARCHAR2(2);
 
-BEGIN < < start_loop > > -- Exit condition
-IF v_rollno > 5 THEN GOTO end_loop;
+BEGIN < < start_loop > > IF v_rollno > 5 THEN GOTO end_loop;
 
 END IF;
 
--- Fetch GPA
 SELECT
     GPA INTO v_gpa
 FROM
@@ -286,7 +284,6 @@ FROM
 WHERE
     RollNo = v_rollno;
 
--- Determine Grade
 IF v_gpa >= 0
 AND v_gpa < 4 THEN v_grade := 'F';
 
@@ -309,18 +306,60 @@ ELSE v_grade := 'A+';
 
 END IF;
 
--- Print Output
 DBMS_OUTPUT.PUT_LINE(
     'RollNo: ' || v_rollno || '  GPA: ' || v_gpa || '  Grade: ' || v_grade
 );
 
--- Increment
 v_rollno := v_rollno + 1;
 
--- Jump back
 GOTO start_loop;
 
 < < end_loop > > NULL;
+
+END;
+
+/ -- Exception Handling
+/*
+ 8. Based on the University database schema, write a PL/SQL block to display the details of the Instructor whose name is supplied by the user. Use exceptions to show appropriate error message for the following cases: 
+ a. Multiple instructors with the same name
+ b. No instructor for the given name
+ */
+DECLARE v_name Instructor.name % TYPE := '&instructor_name';
+
+v_id Instructor.ID % TYPE;
+
+v_dept Instructor.dept_name % TYPE;
+
+v_salary Instructor.salary % TYPE;
+
+BEGIN
+SELECT
+    ID,
+    dept_name,
+    salary INTO v_id,
+    v_dept,
+    v_salary
+FROM
+    Instructor
+WHERE
+    name = v_name;
+
+DBMS_OUTPUT.PUT_LINE('Instructor Details:');
+
+DBMS_OUTPUT.PUT_LINE('ID: ' || v_id);
+
+DBMS_OUTPUT.PUT_LINE('Department: ' || v_dept);
+
+DBMS_OUTPUT.PUT_LINE('Salary: ' || v_salary);
+
+EXCEPTION
+WHEN NO_DATA_FOUND THEN DBMS_OUTPUT.PUT_LINE(
+    'Error: No instructor found with name ' || v_name
+);
+
+WHEN TOO_MANY_ROWS THEN DBMS_OUTPUT.PUT_LINE(
+    'Error: Multiple instructors found with name ' || v_name
+);
 
 END;
 
