@@ -1,6 +1,9 @@
 -- ADDITIONAL QUESTIONS
 -- 1. Modify the employee table to check the salary of every employee to be greater than 5000.
-ALTER TABLE Employee ADD CONSTRAINT chk_employee_salary CHECK (Salary > 5000);
+ALTER TABLE
+	Employee
+ADD
+	CONSTRAINT chk_employee_salary CHECK (Salary > 5000);
 
 -- 2. Find the quarter of year from the given date.
 SELECT
@@ -23,8 +26,8 @@ FROM
 	dual;
 
 -- 5. Find the names of all departments with instructor, and remove duplicates.
-SELECT DISTINCT
-	dept_name
+SELECT
+	DISTINCT dept_name
 FROM
 	Instructor;
 
